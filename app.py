@@ -93,7 +93,7 @@ with col_a:
     fig_bar.update_layout(yaxis=dict(title="% of Students", gridcolor="#ECECEC"),
                           plot_bgcolor="#FFFFFF")
     st.plotly_chart(fig_bar, use_container_width=True)
-    st.download_button("📸 Download Bar Chart as PNG", fig_bar.to_image(format="png"), "bar_chart.png")
+    # PNG download removed due to Streamlit Cloud limitations
 
 with col_b:
     st.subheader("📈 Performance Trend by Level")
@@ -109,7 +109,7 @@ with col_b:
     fig_line.update_layout(yaxis=dict(title="% of Students", gridcolor="#ECECEC"),
                            plot_bgcolor="#FFFFFF")
     st.plotly_chart(fig_line, use_container_width=True)
-    st.download_button("📸 Download Line Chart as PNG", fig_line.to_image(format="png"), "line_chart.png")
+    # PNG download removed due to Streamlit Cloud limitations
 
 # PDF Report (text summary only)
 st.subheader("📄 Generate PDF Summary Report")
