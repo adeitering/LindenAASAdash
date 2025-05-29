@@ -41,12 +41,12 @@ st.markdown(f"""
 
 with st.expander("🧭 How to Use This Dashboard Effectively", expanded=False):
     st.markdown("""
-    This dashboard is a tool to guide conversations, not to punish. We encourage:
+    This dashboard is a tool to guide conversations. We encourage:
     - Celebrating **growth** across years and content areas
     - Identifying **trends and needs** for targeted support
     - Supporting **cohort analysis** over time
     - Making **data-informed decisions** for instruction and intervention
-    
+
     💬 Use this in PLCs, staff meetings, and one-on-ones with a mindset of **collective efficacy**.
     """)
 
@@ -87,7 +87,7 @@ with col_a:
                      barmode="stack",
                      text=df_melted["Percentage"].round(1),
                      hover_name="hover",
-                     facet_col="Grade",
+                     facet_col="Grade", facet_col_spacing=0.08,
                      facet_row="Subject",
                      color_discrete_map=color_map)
     fig_bar.update_layout(yaxis=dict(title="% of Students", gridcolor="#ECECEC"),
@@ -111,31 +111,7 @@ with col_b:
     st.plotly_chart(fig_line, use_container_width=True)
     # PNG download removed due to Streamlit Cloud limitations
 
-# PDF Report (text summary only)
-st.subheader("📄 Generate PDF Summary Report")
-pdf_buffer = StringIO()
-pdf = FPDF()
-pdf.add_page()
-pdf.set_font("Arial", size=12)
-pdf.cell(200, 10, txt="Linden AASA Summary Report", ln=True, align="C")
-pdf.cell(200, 10, txt=f"Generated: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True, align="C")
-pdf.ln(10)
-
-summary_rows = []
-if len(year_filter) == 1:
-    year = year_filter[0]
-    df_year = df_filtered[df_filtered["Year"] == year]
-    for grade in grade_filter:
-        for subject in subject_filter:
-            row = df_year[(df_year["Grade"] == grade) & (df_year["Subject"] == subject)]
-            if not row.empty:
-                total_prof = row["Level 3"].values[0] + row["Level 4"].values[0]
-                summary = f"In {year}, {total_prof:.1f}% of {grade} students were Proficient or above in {subject}."
-                summary_rows.append(summary)
-                pdf.cell(200, 10, txt=summary, ln=True)
-
-pdf_output = pdf.output(dest='S').encode('latin-1')
-st.download_button("📄 Download PDF Report", data=pdf_output, file_name="AASA_Summary_Report.pdf")
+# PDF Report temporarily removed due to rendering issues
 
 # Thank you footer
 st.markdown("---")
