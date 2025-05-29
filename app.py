@@ -4,7 +4,6 @@ import plotly.express as px
 from io import StringIO
 import base64
 import datetime
-import matplotlib.pyplot as plt
 from fpdf import FPDF
 
 # Load the data
