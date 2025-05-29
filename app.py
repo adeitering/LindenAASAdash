@@ -6,8 +6,37 @@ import plotly.express as px
 df = pd.read_csv("linden_aasa_dashboard_data.csv")
 
 st.set_page_config(page_title="Linden AASA Dashboard", layout="wide")
-st.title("📊 Linden AASA Performance Dashboard")
-st.markdown("Use the filters below to explore student performance data by grade, subject, and year.")
+
+# Custom Styling for Linden Colors
+green = "#145A32"
+gold = "#B7950B"
+
+st.markdown(f"""
+    <style>
+    .main-title {{
+        font-size: 40px;
+        font-weight: bold;
+        color: {green};
+        text-align: center;
+        margin-bottom: 5px;
+    }}
+    .subtitle {{
+        font-size: 20px;
+        color: {gold};
+        text-align: center;
+        margin-bottom: 25px;
+    }}
+    .stSidebar {{
+        background-color: #F7F9F9;
+    }}
+    .css-18e3th9 {{
+        padding: 2rem 1rem;
+        background-color: #FDFEFE;
+    }}
+    </style>
+    <div class='main-title'>Linden Elementary AASA Performance Dashboard</div>
+    <div class='subtitle'>Tracking Growth • Celebrating Success • Driving Instruction</div>
+""", unsafe_allow_html=True)
 
 # Sidebar filters
 with st.sidebar:
