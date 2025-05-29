@@ -13,6 +13,9 @@ gold = "#B7950B"
 
 st.markdown(f"""
     <style>
+    body {{
+        background-color: #FDFEFE !important;
+    }}
     .main-title {{
         font-size: 40px;
         font-weight: bold;
@@ -31,7 +34,7 @@ st.markdown(f"""
     }}
     .css-18e3th9 {{
         padding: 2rem 1rem;
-        background-color: #FDFEFE;
+        background-color: #FFFFFF;
     }}
     </style>
     <div class='main-title'>Linden Elementary AASA Performance Dashboard</div>
